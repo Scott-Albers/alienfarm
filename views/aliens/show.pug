@@ -2,3 +2,20 @@ extends ../shared/template
 block title
   h1 Show Alien
 block content
+  .row
+    .col-xs-6
+    table.table.table-striped
+      thread
+       tr
+         th Name
+         th Photo
+         th planet
+       tbody
+         tr
+             td
+               a(href='/aliens/' + alien.id)= alien.name
+             td
+               img.img-responsive.thumbnail.alien(src=alien.photo)
+             td
+               img.img-responsive.thumbnail.alien(src=alien.planet)
+       .col-xs-6

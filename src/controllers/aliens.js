@@ -2,9 +2,12 @@
 
 import express from 'express';
 const router = module.exports = express.Router();
+import Alien from '../models/alien';
 
 router.get('/', (req, res) => {
-  res.render('aliens/index');
+  const aliens = Alien.find();
+  console.log('aliens:', aliens);
+  res.render('aliens/index', { aliens });
 });
 
 router.get('/new', (req, res) => {
@@ -12,10 +15,13 @@ router.get('/new', (req, res) => {
 });
 
 router.get('/:id', (req, res) => {
-  res.render('aliens/show');
+  const alien = Alien.find(req.params.id);
+  res.render('aliens/show', { alien });
 });
 
 
 router.post('/', (req, res) => {
+  const alien = new Alien(req.body);
+  alien.save();
   res.redirect('/aliens');
 });
