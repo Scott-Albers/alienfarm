@@ -20,5 +20,7 @@ const port = process.env.PORT || 3333;
 app.listen(port, () => {
   logger.log('info', '[EXPRESS] - listening port: %d', port);
 });
-// test
+
+app.use('/', require('./controllers/home'));
+
 module.exports = app;
